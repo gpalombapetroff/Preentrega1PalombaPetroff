@@ -4,10 +4,10 @@ import { __dirname } from "../path.js";
 
 const storageProducts = multer.diskStorage({
     destination: (req,file, cb) => {
-        cb(null, `${__dirname}/public/img/products`) //Guardame las img en esta carpeta
+        cb(null, `${__dirname}/public/img/products`) 
     },
     filename: (req,file, cb) => {
-        cb(null, `${Date.now()}${file.originalname}`) //Concatename la fecha actual con el nombre origianl del archivo
+        cb(null, `${Date.now()}${file.originalname}`) 
     }
     
 })

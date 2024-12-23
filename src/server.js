@@ -1,4 +1,5 @@
 import express from 'express'
+import mongoose from 'mongoose'
 import { create } from 'express-handlebars'
 import { Server } from 'socket.io'
 import path from 'path'
@@ -7,6 +8,7 @@ import productRouter from './routes/productos.routes.js'
 import cartRouter from './routes/carritos.routes.js'
 import multerRouter from './routes/imagenes.routes.js'
 import chatRouter from './routes/chat.routes.js'
+import orderRouter from './routes/orders.routes.js'
 
 const app = express()
 const hbs = create()
@@ -15,7 +17,9 @@ const PORT = 8080
 const server = app.listen(PORT, () => {
     console.log("Server on port", PORT)
 })
-
+await mongoose.connect("mongodb+srv://gpalombapetroff:AE0jIfE9G9KQccVX@cluster0.a5ip7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+.then(() => console.log("BDD conectada"))
+.catch((e) => console.log("Error al conectar con bdd: ", e))
 
 const io = new Server(server)
 
